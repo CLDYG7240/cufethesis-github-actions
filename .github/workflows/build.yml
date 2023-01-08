@@ -1,0 +1,86 @@
+name: Build the project
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - uses: teatimeguest/setup-texlive-action@v2
+      with:
+        packages: >-
+          texliveonfly
+          scheme-basic
+          cleveref
+          hyperref
+          latexmk
+          biblatex
+          xelatex
+          xetex
+          amsthm
+          threeparttable
+          multirow
+          longtable
+          algorithms
+          siunitx
+          thuthesis
+          ctex
+          iftex
+          kvdefinekeys
+          kvsetkeys
+          kvoptions
+          etoolbox
+          filehook
+          xparse
+          geometry
+          fancyhdr
+          titlesec
+          notoccite
+          amsmath
+          graphicx
+          caption
+          pdfpages
+          enumitem
+          environ
+          footmisc
+          bigfoot
+          xecjk
+          ulem
+          array
+          booktabs
+          url
+          natbib
+          bibunits
+          newtx
+          unicode-math
+          fontenc
+          bm
+          xits
+          float
+          biblatex-gb7714-2015
+          xstring
+          lscape
+          pdflscape
+          biber
+          biber-windows
+    - run: DISM.exe /Online /Add-Capability /CapabilityName:Language.Fonts.Hans~~~und-HANS~0.0.1.0
+    - run: DISM.exe /Online /Add-Capability /CapabilityName:Language.Fonts.Hant~~~und-HANT~0.0.1.0
+    - run: latexmk thuthesis-example.tex
+    - run: latexmk spine.tex
+    - run: latexmk -c
+    
+    - uses: actions/upload-artifact@v3
+      with:
+        name: built-thesis
+        path: thesis.pdf
+    
+    - uses: actions/upload-artifact@v3
+      with:
+        name: built-spine
+        path: spine.pdf
