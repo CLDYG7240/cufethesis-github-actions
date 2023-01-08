@@ -4,4 +4,4 @@
 
 之所以要这样做而不是本地编译，是为了方便非 Windows 环境的用户在编译论文时使用正确的字体。实际上，学校提供了论文的 Word 模版，并在其中规定了字体。thuthesis 只有在 Windows 环境下编译才严格符合学校的规定。本脚本使用了 Github Actions 提供的 Windows 环境以生成字体正确的论文。
 
-注意：在 `.github/workflows/build.yml` 中，默认的论文主文件名为 `thuthesis-example.tex`（第75行），与 thuthesis 提供的默认文件名相同。然而，thuthesis 文档建议用户在写自己的论文时不要使用这一文件名，而是复制这一文件，并重新命名。这里假定用户没有采纳这一建议。这样，用户应当可以直接用这个脚本生成 thuthesis 的样例论文。如果用户采纳了 thuthesis 的建议，也请自行修改 `.github/workflows/build.yml` 中第75行的文件名，以编译正确的文件。（如果你不知道这里在说什么，大概率可以直接忽略。）
+**注意：在 `.github/workflows/build.yml` 中，默认的论文主文件名为 `thuthesis-example.tex`（第75行），与 thuthesis 提供的默认文件名相同。然而，thuthesis 文档建议用户在写自己的论文时不要使用这一文件名，而是复制这一文件，并重新命名。这里假定用户没有采纳这一建议。这样，用户应当可以直接用这个脚本生成 thuthesis 的样例论文。如果用户采纳了 thuthesis 的建议，也请自行修改 `.github/workflows/build.yml` 中第75行的文件名，以编译正确的文件。（如果你不知道这里在说什么，大概率可以直接忽略。）**
