@@ -77,10 +77,10 @@ jobs:
     
     - uses: actions/upload-artifact@v3
       with:
-        name: built-thesis
+        name: thesis pdf
         path: thuthesis-example.pdf
     
     - uses: actions/upload-artifact@v3
       with:
-        name: built-spine
+        name: spine pdf
         path: spine.pdf
