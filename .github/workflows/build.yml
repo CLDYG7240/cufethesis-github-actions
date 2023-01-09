@@ -78,7 +78,7 @@ jobs:
     - uses: actions/upload-artifact@v3
       with:
         name: built-thesis
-        path: thesis.pdf
+        path: thuthesis-example.pdf
     
     - uses: actions/upload-artifact@v3
       with:
