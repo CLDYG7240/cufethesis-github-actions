@@ -1,6 +1,6 @@
 # thuthesis-github-actions
 
-清华大学学位论文 LaTeX 模版 [thuthesis](https://github.com/tuna/thuthesis) 建议在最后提交时使用 Windows 编译以获得正确的字体。本项目提供使用 Github Actions 自动编译 thuthesis 的脚本。用户可以将本 repo 中的 `.github/workflows` 文件夹拷贝至自己的论文项目中并上传至 Github。此时，在 repo 的 Actions 菜单中可以看到 Github Actions 会自动编译项目（首次编译 thuthesis 提供的样例论文大致需要 10 分钟，此后 TeX 环境会自动缓存，这一时间将缩短至 2 分钟），并生成论文和书脊供下载。此后，每当用户将新的 commit push 到 repo 中时，Github 都会自动重新编译论文。
+清华大学学位论文 LaTeX 模版 [thuthesis](https://github.com/tuna/thuthesis) 建议在最后提交时使用 Windows 编译以获得正确的字体。本项目提供使用 Github Actions 自动编译 thuthesis 的脚本。用户可以将本 repo 中的 `.github` 文件夹拷贝至自己的论文项目中并上传至 Github。此时，在 repo 的 Actions 菜单中可以看到 Github Actions 会自动编译项目（首次编译 thuthesis 提供的样例论文大致需要 10 分钟，此后 TeX 环境会自动缓存，这一时间将缩短至 2 分钟），并生成论文和书脊供下载。此后，每当用户将新的 commit push 到 repo 中时，Github 都会自动重新编译论文。
 
 之所以要这样做而不是本地编译，是为了方便非 Windows 环境的用户在编译论文时使用正确的字体。实际上，学校提供了论文的 Word 模版，并在其中规定了字体。thuthesis 只有在 Windows 环境下编译（或在安装了 Windows 字体的其他系统下编译）才严格符合学校的规定。本脚本使用了 Github Actions 提供的 Windows 环境以生成字体正确的论文。
 
