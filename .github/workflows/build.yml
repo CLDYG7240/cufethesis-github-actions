@@ -71,7 +71,6 @@ jobs:
           biber-windows
     - run: DISM.exe /Online /Add-Capability /CapabilityName:Language.Fonts.Hans~~~und-HANS~0.0.1.0
     - run: DISM.exe /Online /Add-Capability /CapabilityName:Language.Fonts.Hant~~~und-HANT~0.0.1.0
-    - run: DISM.exe /Online /Add-Capability /CapabilityName:Language.Fonts.zh-CN~0.0.1.0
     - run: latexmk main.tex
     - run: latexmk -c
     
