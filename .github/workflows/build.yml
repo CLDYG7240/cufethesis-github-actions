@@ -12,6 +12,10 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
+    - name: Set Version
+      id: set_version
+      run: echo "VERSION=v$(date +'%Y.%m.%d.%H%M')" >> $GITHUB_ENV
+
     - uses: teatimeguest/setup-texlive-action@v2
       with:
         packages: >-
@@ -98,9 +102,31 @@ jobs:
     - run: biber main
     - run: xelatex main.tex
     - run: xelatex main.tex
-    
+
     - uses: actions/upload-artifact@v3
       with:
-        name: thesis pdf
+        name: main.pdf
         path: main.pdf
 
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ env.VERSION }}
+        release_name: Release ${{ env.VERSION }}
+        body: |
+          This is the PDF output of the LaTeX project.
+        draft: false
+        prerelease: false
+
+    - name: Upload Release Asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: main.pdf
+        asset_name: main.pdf
+        asset_content_type: application/pdf
